@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .taskbar {
+            display: flex;
+            justify-content: space-between; /* distributes space evenly */
+            align-items: center;             /* vertically center text */
+            background-color: rgb(121, 160, 173);
+            height: 40px;
+            width: 100%;
+        }
+
+        .task {
+            flex: 1;                  
+            text-align: center;       
+            padding: 10px 0;
+            color: white;             
+            cursor: pointer;
+        }
+
+        .task:last-child {
+            border-right: none;
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+        /* #Home{
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+        #Electronics{
+            position: absolute;
+            top: 20px;
+            left: 65px;
+        }
+        #Apparels{
+            position: absolute;
+            top: 20px;
+            left: 152px;
+        }
+        #Clothes{
+            position: absolute;
+            top: 20px;
+            left: 223px;
+        }
+        #Decor{
+            position: absolute;
+            top: 20px;
+            left: 290px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="task" id="Home"><a href="http://127.0.0.1:3000/HTML/home.html?serverWindowId=ca73f3da-b409-4958-8de6-df3196a90953">Home</a></div>
+        <div class="task" id="Electronics">Electronics</div>
+        <div class="task" id="Apparels">Apparels</div>
+        <div class="task" id="Clothes">Clothing</div>
+        <div class="task" id="Decor">Home-Decor</div>
+    </div> 
+</body>
+</html>
