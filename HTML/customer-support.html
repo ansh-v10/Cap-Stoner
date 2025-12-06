@@ -259,3 +259,120 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support - Cap-Stoner</title>
+    <link rel="stylesheet" href="customer_support.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="home.html">Cap-Stoner</a>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="#">Decor</a>
+            <a href="#">Apparels</a>
+            <a href="#">Clothes</a>
+            <a href="#">Electronics</a>
+
+            <input type="search" id="Search" placeholder="Search…">
+        </div>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="home.html">Home</a>
+        <a href="#">Decor</a>
+        <a href="#">Apparels</a>
+        <a href="#">Clothes</a>
+        <a href="#">Electronics</a>
+
+        <input type="search" placeholder="Search…" class="mobile-search">
+    </div>
+
+    <div class="header">
+        <h1>Customer Support</h1>
+        <p>We’re here to help you 24/7</p>
+    </div>
+
+    <div class="support-container">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send Message...</button>
+        </form>
+    </div>
+
+    <div class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <p><strong>Q1:</strong> How do I track my order?</p>
+        <p><strong>A:</strong> You can track your order from the "Track Order" section in Customer Support.</p>
+
+        <p><strong>Q2:</strong> What is the return policy?</p>
+        <p><strong>A:</strong> Returns are accepted within 7 days of delivery. For more info, check the Returns & Refunds section.</p>
+
+        <p><strong>Q3:</strong> How can I contact customer care?</p>
+        <p><strong>A:</strong> You can use this contact form or email us at support@cap-stoner.com.</p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Customer Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Track Order</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div>
+                <h3>About Cap-Stoner</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+
+            <div>
+                <h3>Policies</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Cap-Stoner. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+
+</body>
+</html>
