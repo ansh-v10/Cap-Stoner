@@ -4,174 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <style>
-        *{
-            font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .navbar {
-            width: 100%;
-            background: #ffffff;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            z-index: 10;
-            text-decoration: none;
-        }
-
-        .logo a {
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-            color: #2d5baa;
-        }
-
-        .nav-links {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-        }
-
-        #Search {
-            padding: 6px 10px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-        }
-
-        .hero {
-            margin-top: 80px;
-            width: 100%;
-            height: 250px; 
-            background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff') center/cover no-repeat;
-        }
-
-        .section {
-            padding: 20px;
-        }
-
-        .section h2 {
-            margin-bottom: 15px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-        }
-
-        .product-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;      
-            object-fit: cover;  
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background: #2d5baa;
-            color: white;
-            padding: 40px 25px;
-            margin-top: 30px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        footer a {
-            color: #ddd;
-            display: block;
-            text-decoration: none;
-            margin: 6px 0;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.4);
-            padding-top: 10px;
-        }
-        .product-card:hover{
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                width: 100%;
-                justify-content: space-between;
-                margin-top: 10px;
-            }
-
-            #Search {
-                width: 100%;
-                margin-top: 5px;
-            }
-
-            .hero {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo a {
-                font-size: 20px;
-            }
-
-            .nav-links a {
-                font-size: 14px;
-                flex: 1 1 45%;
-            }
-
-            .hero {
-                height: 150px;
-            }
-
-            .section {
-                padding: 15px;
-            }
-
-            .product-card {
-                padding: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
+
     <div class="navbar">
         <div class="logo">
-            <a href="home.html">Cap-Stoner</a>
+            <a href="#">Cap-Stoner</a>
         </div>
 
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="#">Home</a>
             <a href="#">Decor</a>
             <a href="#">Apparels</a>
@@ -179,55 +21,83 @@
             <a href="#">Electronics</a>
 
             <input type="search" id="Search" placeholder="Search…">
+
+            <button class="cart-btn" onclick="window.location.href='cart.html'">
+                🛒 Cart <span id="cartCount" class="cart-count">0</span>
+            </button>
         </div>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="#">Decor</a>
+        <a href="#">Apparels</a>
+        <a href="#">Clothes</a>
+        <a href="#">Electronics</a>
+
+        <input type="search" placeholder="Search…" class="mobile-search">
+
+        <button class="mobile-cart-btn" onclick="window.location.href='cart.html'">
+            🛒 Cart <span id="cartCountMobile" class="cart-count">0</span>
+        </button>
     </div>
 
     <div class="hero"></div>
 
     <div class="section">
         <h2>Featured Products</h2>
-
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://images.ctfassets.net/javen7msabdh/6MSnZ4pbrucgwSh4iyCXtl/ee1e31aff173572e432b60bc8c377c3f/major-iv-black-front-desktop-1.jpg?w=2880&fm=avif&q=100">
+                <img src="https://images.ctfassets.net/javen7msabdh/6MSnZ4pbrucgwSh4iyCXtl/ee1e31aff173572e432b60bc8c377c3f/major-iv-black-front-desktop-1.jpg?w=2880&fm=avif&q=100" alt="Wireless Headphones">
                 <h4>Wireless Headphones</h4>
                 <p>₹3999</p>
+                <button class="add-cart-btn" onclick="addToCart('Wireless Headphones', 3999)">Add to Cart</button>
             </div>
 
             <div class="product-card">
-                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcShi-RQ4Yk_k16IWvdbMCwfZHUSPoNVdr0MkPtykvgifBVcfNUDKUrl34z71kiuKEvT97AVBdk">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcShi-RQ4Yk_k16IWvdbMCwfZHUSPoNVdr0MkPtykvgifBVcfNUDKUrl34z71kiuKEvT97AVBdk" alt="Vintage Table Lamp">
                 <h4>Vintage Table Lamp</h4>
                 <p>₹9999</p>
+                <button class="add-cart-btn" onclick="addToCart('Vintage Table Lamp', 9999)">Add to Cart</button>
             </div>
 
             <div class="product-card">
-                <img src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1763185851_1111524.jpg?w=480&dpr=2">
+                <img src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1763185851_1111524.jpg?w=480&dpr=2" alt="Men's Hoodie">
                 <h4>Men's Hoodie</h4>
                 <p>₹1799</p>
+                <button class="add-cart-btn" onclick="addToCart('Men&#39;s Hoodie', 1799)">Add to Cart</button>
             </div>
         </div>
     </div>
 
     <div class="section">
         <h2>On Sale</h2>
-
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://hustleculture.co.in/cdn/shop/files/1_36_e9bae351-a0bc-43dc-aac4-91324f123dc1.png?v=1763154680&width=800">
+                <img src="https://hustleculture.co.in/cdn/shop/files/1_36_e9bae351-a0bc-43dc-aac4-91324f123dc1.png?v=1763154680&width=800" alt="Stylish Sneakers">
                 <h4>Stylish Sneakers</h4>
                 <p>₹24999</p>
+                <button class="add-cart-btn" onclick="addToCart('Stylish Sneakers', 24999)">Add to Cart</button>
             </div>
 
             <div class="product-card">
-                <img src="https://hidesign.com/cdn/shop/files/bose-03-mens-tan-duffle-bag_1_720x.jpg?v=1742381102">
+                <img src="https://hidesign.com/cdn/shop/files/bose-03-mens-tan-duffle-bag_1_720x.jpg?v=1742381102" alt="Leather Bag">
                 <h4>Leather Bag</h4>
                 <p>₹4999</p>
+                <button class="add-cart-btn" onclick="addToCart('Leather Bag', 4999)">Add to Cart</button>
             </div>
 
             <div class="product-card">
-                <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ultra-case-unselect-gallery-1-202509_GEO_IN?wid=5120&hei=3280&fmt=p-jpg&qlt=80&.v=aTVJSEliNW9jb25zalBlTm16VmMxcWpkNHRJWDMzcTg3NWRxV0pydTcvSzhEekNMRU1SeExKdFlXRTRiT28vd0tZMGFKbG9yanhQdjZDS1dZUFFhRWJZc3g4ZkhUVEc0bFNFL1l3MHJZd1VaVjJXYnlNb3NGL3BGRmdqYms4Tzk">
+                <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ultra-case-unselect-gallery-1-202509_GEO_IN?wid=5120&hei=3280&fmt=p-jpg&qlt=80" alt="Smart Watch">
                 <h4>Smart Watch</h4>
                 <p>₹7999</p>
+                <button class="add-cart-btn" onclick="addToCart('Smart Watch', 7999)">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -239,7 +109,7 @@
                 <a href="#">Help Center</a>
                 <a href="#">Track Order</a>
                 <a href="#">Returns</a>
-                <a href="http://127.0.0.1:3000/HTML/customer-support.html?serverWindowId=4e83aa3d-0392-4719-8ddf-e7facfc5014b">Contact Us</a>
+                <a href="customer-support.html">Contact Us</a>
             </div>
 
             <div>
@@ -256,10 +126,39 @@
                 <a href="#">Cookie Policy</a>
             </div>
         </div>
-
-        <div class="footer-bottom">
-            © 2025 Cap-Stoner. All Rights Reserved.
-        </div>
+        <div class="footer-bottom">© 2025 Cap-Stoner. All Rights Reserved.</div>
     </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function updateCartCount() {
+            const count = cart.length;
+            const desktop = document.getElementById("cartCount");
+            const mobile = document.getElementById("cartCountMobile");
+
+            if (desktop) desktop.textContent = count;
+            if (mobile) mobile.textContent = count;
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            alert(name + " added to cart!");
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        updateCartCount();
+    </script>
+
 </body>
 </html>
