@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cap-Stoner Login</title>
+  <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cap-Stoner</h1>
+    <form>
+      <input type="text" id="login" placeholder="Phone Number or Email Address" required>
+      <input type="password" id="password" placeholder="Password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" required>
+      <p id="imp">Password should have an uppercase, a lowercase, and a number (0-9)<br>
+      Minimum 8 characters</p>
+
+      <button type="submit" id="btn-login">
+        <a href="http://127.0.0.1:3000/HTML/home.html" id="l2">Login</a>
+      </button>
+
+      <a href="http://127.0.0.1:3000/HTML/signin.html" id="p">Forgotten Password?</a>
+      <hr>
+      <button type="button" id="new">Create New Account</button>
+    </form>
+  </div>
+</body>
+</html>

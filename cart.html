@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap-Stoner | Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="home.html">Cap-Stoner</a>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Home</a>
+            <a href="#">Decor</a>
+            <a href="#">Apparels</a>
+            <a href="#">Clothes</a>
+            <a href="#">Electronics</a>
+
+            <button class="cart-btn">
+                🛒 Cart <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </div>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="home.html">Home</a>
+        <a href="#">Decor</a>
+        <a href="#">Apparels</a>
+        <a href="#">Clothes</a>
+        <a href="#">Electronics</a>
+
+        <button class="mobile-cart-btn">
+            🛒 Cart <span id="cartCountMobile" class="cart-count">0</span>
+        </button>
+    </div>
+
+    <main class="cart-page">
+        <h1>Your Cart</h1>
+
+        <div id="cartItems" class="cart-items"></div>
+
+        <div class="cart-summary" id="cartSummary">
+            <span>Total</span>
+            <span id="cartTotal">₹0</span>
+        </div>
+
+        <div class="cart-actions">
+            <button class="secondary-btn" onclick="window.location.href='home.html'">
+                ← Continue Shopping
+            </button>
+            <button class="danger-btn" id="clearCartBtn">
+                Clear Cart
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Customer Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Track Order</a>
+                <a href="#">Returns</a>
+                <a href="customer-support.html">Contact Us</a>
+            </div>
+
+            <div>
+                <h3>About Cap-Stoner</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+
+            <div>
+                <h3>Policies</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Cap-Stoner. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        function getCart() {
+            return JSON.parse(localStorage.getItem("cart")) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const count = cart.length;
+
+            const desktop = document.getElementById("cartCount");
+            const mobile = document.getElementById("cartCountMobile");
+
+            if (desktop) desktop.textContent = count;
+            if (mobile) mobile.textContent = count;
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const cartDiv = document.getElementById("cartItems");
+            const totalSpan = document.getElementById("cartTotal");
+            const summary = document.getElementById("cartSummary");
+
+            cartDiv.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartDiv.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+                totalSpan.textContent = "₹0";
+                summary.style.display = "none";
+                return;
+            }
+
+            summary.style.display = "flex";
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += Number(item.price);
+
+                const row = document.createElement("div");
+                row.className = "cart-item";
+
+                row.innerHTML = `
+                    <div class="cart-item-info">
+                        <span class="cart-item-name">${item.name}</span>
+                        <span class="cart-item-price">₹${item.price}</span>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">Remove</button>
+                `;
+
+                cartDiv.appendChild(row);
+            });
+
+            totalSpan.textContent = "₹" + total;
+
+            // attach remove listeners
+            document.querySelectorAll(".remove-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const idx = Number(btn.dataset.index);
+                    const currentCart = getCart();
+                    currentCart.splice(idx, 1);
+                    saveCart(currentCart);
+                    updateCartCount();
+                    renderCart();
+                });
+            });
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCartCount();
+            renderCart();
+
+            const clearBtn = document.getElementById("clearCartBtn");
+            clearBtn.addEventListener("click", () => {
+                if (confirm("Clear all items from your cart?")) {
+                    saveCart([]);
+                    updateCartCount();
+                    renderCart();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
